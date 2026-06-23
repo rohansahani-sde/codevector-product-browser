@@ -12,6 +12,20 @@ connectDB();
 
 app.use(express.json());
 
+
+
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "CodeVector Product Browser API",
+    endpoints: {
+      products: "/api/products",
+      filter: "/api/products?category=Books",
+      pagination: "/api/products?limit=5"
+    }
+  });
+});
+
 app.use("/api/products", productRoutes);
 
 const PORT = process.env.PORT || 5000;
